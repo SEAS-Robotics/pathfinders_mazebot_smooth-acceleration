@@ -270,11 +270,11 @@ function bot_Servo_Motors_Turbo_Fn (network_ReceivedString_FromControllerJoystic
         turbo_mode = 1
     } else if (network_ReceivedString_FromControllerJoystick_Str_ParamIn == "turbo_off") {
         images.createImage(`
-            # . # # .
-            . # . . #
-            # . # . #
-            # . . # .
-            . # # . #
+            . . . . .
+            . . . . .
+            . . # . .
+            . . . . .
+            . . . . .
             `).showImage(0, 0)
         turbo_mode = 0
     }
@@ -810,6 +810,23 @@ accel_rate = 1
 max_normal_speed = 60
 // This value will determine the maximum speed to which the bot will accelerate before topping out. Valid range is 0 to 100.
 max_turbo_speed = 99
+quest_Note_4.quest_Show_String_For_Note_Small_Func(
+"Wheel speed for turns"
+)
+let turns_wheel_speed = 40
+// When the RQ100 robot is configured with an overdrive gearing system, small disparities in motor power and drive train friction between left and right wheels can accumulate to cause a drift either right or left.
+// The power calibration values are applied to the individual motor power settings to compensate for these disparities (which may differ between forward and reverse drive as well as normal versus turbo speed)
+quest_Note_4.quest_Show_String_For_Note_Small_Func(
+"Per-bot Power Calibration for Left/Right \"drift\":"
+)
+let r_normal_fwd_cal = 1
+let l_normal_fwd_cal = 1
+let r_boost_fwd_cal = 1
+let l_boost_fwd_cal = 1
+let r_normal_rev_cal = 1
+let l_normal_rev_cal = 1
+let r_boost_rev_cal = 1
+let l_boost_rev_cal = 1
 quest_Note_1.quest_Show_String_For_Note_Big_Func(
 "Below, Setup Code for Student:"
 )
@@ -1002,6 +1019,14 @@ basic.forever(function () {
     }
 })
 basic.forever(function () {
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "Ver 2.11.0: 25-0528-1900"
+    )
+    quest_Note_1.quest_Show_String_For_Note_Small_Func(
+    "©️ 2025 Quest Institute. All rights reserved."
+    )
+})
+basic.forever(function () {
     quest_Note_6.quest_Show_String_For_Note_Big_Func(
     ""
     )
@@ -1188,14 +1213,6 @@ basic.forever(function () {
         "Network Message Max_Character_Length: 19"
         )
     }
-})
-basic.forever(function () {
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "Ver 2.11.0: 25-0528-1900"
-    )
-    quest_Note_1.quest_Show_String_For_Note_Small_Func(
-    "©️ 2025 Quest Institute. All rights reserved."
-    )
 })
 basic.forever(function () {
     if (true) {
